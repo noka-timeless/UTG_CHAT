@@ -1,0 +1,107 @@
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - bot_challenge
+  - admissions_info
+  - admission_requirements
+  - courses_guide
+  - scholarships
+  - hostel_support
+  - ask_fees
+  - ask_deadlines
+  - out_of_scope
+
+entities:
+  - program
+
+slots:
+  program:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: program
+
+responses:
+  utter_greet:
+    - text: "Hello 👋 Welcome to UTG Assistant! I can help with admissions, courses, scholarships, fees, hostel, and deadlines.\n\nWhat would you like to know?"
+
+  utter_goodbye:
+    - text: "Goodbye 👋 Feel free to come back anytime. Good luck with your UTG journey!"
+
+  utter_iamabot:
+    - text: "I'm UTG Virtual Assistant 🤖 — an AI guide for the University of The Gambia. I can help you with admissions, courses, scholarships, fees, hostel, and application deadlines."
+
+  utter_admissions_info:
+    - text: "📌 To apply to UTG, follow these steps:\n1. Visit utg.edu.gm and create an account\n2. Choose your preferred program\n3. Fill the online application form\n4. Upload your WAEC results and valid ID\n5. Pay the application fee\n6. Submit and await screening results\n\nWould you like more details?"
+      buttons:
+        - title: "What are the requirements?"
+          payload: "What are the admission requirements?"
+        - title: "When is the deadline?"
+          payload: "When is the admission deadline?"
+        - title: "What are the fees?"
+          payload: "How much are the fees?"
+
+  utter_requirements:
+    - text: "📄 UTG Admission Requirements:\n• Minimum 5 WAEC/WASSCE credit passes (A1–C6)\n• English Language — credit required for ALL programs\n• Mathematics — credit required for Science, IT, Engineering & Business\n• Program-specific subjects apply per school\n• Valid ID: National ID, Passport, or Birth Certificate\n• Must be 16+ years old at time of application"
+
+  utter_deadlines:
+    - text: "📅 Typical UTG Admissions Timeline:\n• Jan – Mar: Application window opens\n• Apr – Jun: Screening and review\n• Jul – Aug: Results published\n\nDates shift each year — always confirm at utg.edu.gm or contact the Admissions Office directly."
+
+  utter_fees:
+    - text: "💰 UTG Fees by category:\n• Application fee: ~GMD 200–500 (non-refundable)\n• Tuition: varies by faculty and program level\n• Registration fee: charged each semester\n• Hostel: separate from tuition fees\n\nFor the exact current fee schedule, check utg.edu.gm or visit the Finance Office."
+
+  utter_courses_guide:
+    - text: "📚 UTG has 7 schools offering 30+ programs. Which area interests you?"
+      buttons:
+        - title: "💻 Information Technology"
+          payload: "Tell me about IT programs at UTG"
+        - title: "⚖️ Law"
+          payload: "Tell me about the Law program at UTG"
+        - title: "🏥 Health Sciences"
+          payload: "Tell me about Health Sciences at UTG"
+        - title: "💼 Business"
+          payload: "Tell me about Business programs at UTG"
+
+  utter_scholarships:
+    - text: "🎓 UTG and its partners offer several funding options. Which type would you like to know about?"
+      buttons:
+        - title: "🏆 Merit-based"
+          payload: "Tell me about merit scholarships at UTG"
+        - title: "💰 Need-based"
+          payload: "Tell me about need-based financial aid at UTG"
+        - title: "🏛️ Government scholarship"
+          payload: "Tell me about government scholarships for UTG"
+
+  utter_hostel_support:
+    - text: "🏠 UTG provides on-campus hostel accommodation. Key facts:\n• Apply through Student Affairs after gaining admission\n• Spaces are limited — apply early\n• First-year students are eligible but not guaranteed a space\n• Fees cover accommodation + basic utilities\n• Students must vacate during semester breaks"
+      buttons:
+        - title: "How do I apply for hostel?"
+          payload: "How do I apply for hostel at UTG?"
+        - title: "What are the hostel fees?"
+          payload: "What are the hostel fees at UTG?"
+
+  utter_out_of_scope:
+    - text: "I'm specialised in UTG information. I can help you with:\n• 🎓 Admissions & how to apply\n• 📚 Courses & programs\n• 💰 Scholarships & financial aid\n• 🏠 Hostel & accommodation\n• 💵 Fees & payments\n• 📅 Application deadlines\n\nWhat would you like to know?"
+
+  utter_default:
+    - text: "I didn't quite catch that. Here's what I can help with:"
+      buttons:
+        - title: "🎓 Admissions"
+          payload: "How do I apply to UTG?"
+        - title: "📚 Courses"
+          payload: "What courses does UTG offer?"
+        - title: "💰 Scholarships"
+          payload: "Are there scholarships at UTG?"
+        - title: "🏠 Hostel"
+          payload: "Tell me about UTG hostel"
+
+actions:
+  - action_personalized_greet
+  - action_get_program_info
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

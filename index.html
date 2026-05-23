@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>UTG Chatbot</title>
+
+    <!-- =====================================================
+         🚀 CHATGPT FONT (INTER)
+    ===================================================== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- =====================================================
+         🎨 GLOBAL UI FIX (DARK/LIGHT + ICON FIX)
+    ===================================================== -->
+    <style>
+      :root {
+        color-scheme: light dark;
+      }
+
+      html, body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-rendering: optimizeLegibility;
+        transition: background 0.3s ease, color 0.3s ease;
+      }
+
+      /* Light mode default */
+      body {
+        background: #f4f6f8;
+        color: #111827;
+      }
+
+      /* Dark mode support (auto system OR JS override) */
+      @media (prefers-color-scheme: dark) {
+        body {
+          background: #0f172a;
+          color: #f9fafb;
+        }
+      }
+
+      /* Prevent icon blur / dark glitch */
+      img, svg {
+        max-width: 100%;
+        display: block;
+      }
+
+      /* Root app container */
+      #root {
+        min-height: 100vh;
+      }
+
+      /* Smooth UI rendering */
+      * {
+        box-sizing: border-box;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
